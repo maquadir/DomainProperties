@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DomainProperties</string>
+    <string name="click_to_buy">Click to Buy</string>
+    <string name="click_to_rent">Click to Rent</string>
+    <string name="s_bed_s_bath_s_car">%s Bed, %s Bath, %s Car</string>
+    <string name="from_s_bed_s_bath_s_car">From %s Bed, %s Bath, %s Car</string>
+    <string name="no_properties_available">No properties Available</string>
+    <string name="s_price">Price - %s</string>
+    <string name="s_price_from">Price from - %s</string>
+    <string name="buy">buy</string>
+    <string name="rent">rent</string>
+    <string name="topspot">topspot</string>
+    <string name="project">project</string>
+</resources>

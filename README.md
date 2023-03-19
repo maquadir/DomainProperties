@@ -27,7 +27,7 @@ Displays the properties in a list
 # Installation
 Clone the repo and install the dependencies.
 
-      https://github.com/maquadir/DomainProperties.git
+      https://github.com/maquadir/Muhammad-Adeemul-Khader.git
 
 # Architecture and Design
 The application follows an ```MVVM architecture``` as given below

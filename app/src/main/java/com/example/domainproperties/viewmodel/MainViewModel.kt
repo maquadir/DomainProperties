@@ -36,10 +36,12 @@ class MainViewModel(private val propertiesRepository: PropertiesRepository) : Vi
         }
     }
 
+    //update error state
     private fun updateError(e: Exception) {
         errorMutableState.value = e.message.toString()
     }
 
+    //update data state
     private fun updatePropertyState(buyProperty: Response<PropertyModel>?) {
         if (buyProperty?.body() != null) {
             propsMutableState.value = buyProperty.body()

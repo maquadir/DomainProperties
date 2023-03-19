@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
         }
 
+        //observe error state
         viewModel.errorImmutableState.observe(this) {
             binding.textview.apply {
                 text = it
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
             binding.recyclerview.visibility = View.GONE
 
-            //fetch properties to buy or rent
+            //toggle between buy or rent
             viewModel.fetchProperties(if (isChecked) getString(R.string.rent) else getString(R.string.buy))
         }
     }

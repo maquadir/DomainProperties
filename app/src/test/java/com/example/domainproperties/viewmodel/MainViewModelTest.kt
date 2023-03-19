@@ -86,7 +86,7 @@ class MainViewModelTest {
         whenever(repository.fetchProperties(search_mode = "buy"))
             .thenReturn(Response.success(UtilsTest.results))
 
-        viewModel.fetchProperties("buy") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("buy")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it?.search_results, UtilsTest.results.search_results)
         }
@@ -99,7 +99,7 @@ class MainViewModelTest {
         whenever(repository.fetchProperties(search_mode = "rent"))
             .thenReturn(Response.success(UtilsTest.results))
 
-        viewModel.fetchProperties("rent") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("rent")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it?.search_results, UtilsTest.results.search_results)
         }
@@ -113,7 +113,7 @@ class MainViewModelTest {
         whenever(repository.fetchProperties(search_mode = "buy"))
             .thenReturn(Response.success(null))
 
-        viewModel.fetchProperties("buy") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("buy")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }
@@ -126,7 +126,7 @@ class MainViewModelTest {
         whenever(repository.fetchProperties(search_mode = "rent"))
             .thenReturn(Response.success(null))
 
-        viewModel.fetchProperties("rent") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("rent")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }
@@ -143,7 +143,7 @@ class MainViewModelTest {
                 )
             )
 
-        viewModel.fetchProperties("buy") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("buy")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }
@@ -160,7 +160,7 @@ class MainViewModelTest {
                 )
             )
 
-        viewModel.fetchProperties("rent") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("rent")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }
@@ -177,7 +177,7 @@ class MainViewModelTest {
                 )
             )
 
-        viewModel.fetchProperties("buy") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("buy")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }
@@ -194,7 +194,7 @@ class MainViewModelTest {
                 )
             )
 
-        viewModel.fetchProperties("buy") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("buy")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }
@@ -209,7 +209,7 @@ class MainViewModelTest {
                 throw Exception("Access Denied")
             }
 
-        viewModel.fetchProperties("buy") // Uses testDispatcher, runs its coroutine eagerly
+        viewModel.fetchProperties("buy")
         viewModel.propsImmutableState.observeForever {
             assertEquals(it, null)
         }

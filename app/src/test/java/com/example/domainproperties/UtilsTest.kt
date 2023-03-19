@@ -2,6 +2,7 @@ package com.example.domainproperties
 
 import com.example.domainproperties.model.*
 
+//utility singleton for storing mock data
 object UtilsTest {
 
     private val FirstProp = SearchResult(

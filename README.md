@@ -97,8 +97,8 @@ Constructor dependency injection has been used at multiple instances.It allows f
 The ```View Binding``` Library is an ```Android Jetpack library``` that allows you to create class files for the XML layouts.All the UIView elements in the layout are binded to the class program through view binding.
 
 ### Further Architecture & Design Decisions
-There are different approaches to going about with the development. Below is the one adopted -
-1. Using a single Activity to display the buy and rent properties within the same activity using a recyclerview as both the api's respond with the same model structure. This appraoch would rely on a single activity viewmodel. 
+There are different approaches to going about with the development in the MVVM architecture we have used. Below is the one adopted -
+1. Using a single Activity to display the buy and rent properties by using a recyclerview as both the api's respond with the same model structure. This appraoch would rely on a single activity viewmodel. 
 2. Another approach would have been to use 2 separate fragments one for each api call incase more unique features are to be added . This approach would rely on 2 separate view models , one for each fragment.We are not using this for our application.
 3. We are not using ```sharedviewmodel``` in case we chose point 2 as there is no sharing of data involved between both the fragments. 
 4. We are using a repository pattern to fetch data from a api source. In our case we have a single suspend function as both api's just differ in the ```search_mode= "buy|rent"``` parameter.

@@ -1,6 +1,6 @@
 # Introduction
 
-This is an Android Application written in Kotlin that acquires property models from the `/search` endpoint as below:
+This is an Android Application written in Kotlin that acquires properties from the `/search` endpoint as below:
 
         curl -X POST https://domain-adapter-api.domain.com.au/v1/search -H 'contenttype: application/json' -d '{
          "dwelling_types": ["Apartment / Unit / Flat"],
@@ -68,7 +68,7 @@ Coroutines are a great way to write asynchronous code that is perfectly readable
 It is the UI part that represents the current state of information that is visible to the user.A Recycler View displays the data read from the JSON. We setup a recycler view adapter to take care of displaying the data on the view.
 We use Glide to display profile image using view binding.
 
-### Getting the data from Github
+### Getting the data from Api
 - To get the buy properties, you will need to call the following endpoint:
 
        curl -X POST https://domain-adapter-api.domain.com.au/v1/search -H 'contenttype: application/json' -d '{
@@ -85,14 +85,22 @@ We use Glide to display profile image using view binding.
       
 
 ### Dependency Injection
-Constructor dependency injection has been used at multiple instances.It allows for less code overall when trying to get reference to services you share across classes, and decouples components nicely in general
+Constructor dependency injection has been used at multiple instances.It allows for less code overall when trying to get reference to services you share across classes, and decouples components nicely in general. Using manual dependency injection in our application, whereas there are other automated libraries like Hilt and Koin.
 
 ### View Binding
 The View Binding Library is an Android Jetpack library that allows you to create class files for the XML layouts.All the UIView elements in the layout are binded to the class program through view binding.
 
+### Architecture Decisions
+There are different approaches to going about with the development. Below is the one adopted -
+1. Using a single Activity to display the buy and rent properties within the same activity using a recyclerview as both the api's respond with the same model structure. This appraoch would rely on a single activity viewmodel. 
+2. Another approach would have been to use 2 separate fragments one for each api call incase more unique features are to be added . This approach would rely on 2 separate view models , one for each fragment.We are not using this for our application.
+3. We are not using sharedviewmodel in case we chose point 2 as there is no sharing of data involved between both the fragments. 
+4. We are using a repository pattern to fetch data from a api source. In our case we have a single suspend function as both api's just differ in the search_mode= "buy|rent" parameter.
+5. Tried to adhere to best practices as given in android documentation whereever possible
+
 # Testing
-Unit tests for the ApiService, Repository & VM.
-Automated UI tests using Espresso
+Unit tests are added for the ApiService, Repository & VM.
+Automated UI tests using Espresso can be added for the UI
 
 # Libraries Used
 HTTP
@@ -105,7 +113,7 @@ UI
 - ViewModel - MVVM Architecture
 - Coroutines - Async Calls
 
-Testing
+Testing 
 - Mockito - Unit Tests
 - JUnit - UI Tests
 - MockWebServer

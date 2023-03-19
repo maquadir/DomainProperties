@@ -53,7 +53,10 @@ We have declared a Properties API interface to invoke the JSON url using Retrofi
 
 ### Model
 A Model contains all the data classes.
-PopularMovies and MovieDetails data classes are created using "JSON to Kotlin class" plugin to map the JSON data to Kotlin. A ApiService class to handle api requests and a repository takes care of how data will be fetched from the api.
+PropertyModel data class is created using "JSON to Kotlin class" plugin to map the JSON data to Kotlin.
+
+### Service
+A ApiService class to handle api requests and a repository takes care of how data will be fetched from the api.
 
               val apiService = ApiService()
               val repository = Repository(apiService)
@@ -62,11 +65,12 @@ PopularMovies and MovieDetails data classes are created using "JSON to Kotlin cl
 We set up a view model factory which is responsible for creating view models with dependencies.It contains the data required in the View and translates the data which is stored in Model which then can be present inside a View. ViewModel and View are connected through Databinding and the observable Livedata.
 
 ### Coroutines
-Coroutines are a great way to write asynchronous code that is perfectly readable and maintainable. We use it to perform a job of reading data from the JSON url.
+Coroutines are a great way to write asynchronous code that is perfectly readable and maintainable. We use it to perform a job of reading data from the JSON url.We must specify the Dispatcher(Main/IO) for relevant thread to be used for the operation.
 
 ### View
-It is the UI part that represents the current state of information that is visible to the user.A Recycler View displays the data read from the JSON. We setup a recycler view adapter to take care of displaying the data on the view.
-We use Glide to display profile image using view binding.
+- It is the UI part that represents the current state of information that is visible to the user.A Recycler View displays the data read from the JSON. - - We setup a recycler view adapter to take care of displaying the data on the view.
+- We use Glide to display profile image using view binding.
+- We use SwitchCompat for switching between buy and rent properties
 
 ### Getting the data from Api
 - To get the buy properties, you will need to call the following endpoint:
@@ -85,12 +89,12 @@ We use Glide to display profile image using view binding.
       
 
 ### Dependency Injection
-Constructor dependency injection has been used at multiple instances.It allows for less code overall when trying to get reference to services you share across classes, and decouples components nicely in general. Using manual dependency injection in our application, whereas there are other automated libraries like Hilt and Koin.
+Constructor dependency injection has been used at multiple instances.It allows for less code overall when trying to get reference to services you share across classes, and decouples components nicely in general. We are using manual dependency injection in our application, whereas there are other automated libraries like Hilt and Koin.
 
 ### View Binding
 The View Binding Library is an Android Jetpack library that allows you to create class files for the XML layouts.All the UIView elements in the layout are binded to the class program through view binding.
 
-### Architecture Decisions
+### Further Architecture & Design Decisions
 There are different approaches to going about with the development. Below is the one adopted -
 1. Using a single Activity to display the buy and rent properties within the same activity using a recyclerview as both the api's respond with the same model structure. This appraoch would rely on a single activity viewmodel. 
 2. Another approach would have been to use 2 separate fragments one for each api call incase more unique features are to be added . This approach would rely on 2 separate view models , one for each fragment.We are not using this for our application.

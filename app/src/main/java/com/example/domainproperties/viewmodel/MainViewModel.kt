@@ -8,13 +8,15 @@ import com.example.domainproperties.repository.PropertiesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 import java.lang.Exception
 
 class MainViewModel(private val propertiesRepository: PropertiesRepository) : ViewModel() {
 
-    private val propsMutableState: MutableLiveData<PropertyModel?> = MutableLiveData<PropertyModel?>()
-    val propsImmutableState: LiveData<List<SearchResult>>
-        get() = propsMutableState.map { it?.search_results ?: emptyList()  }
+    private val propsMutableState: MutableLiveData<PropertyModel?> =
+        MutableLiveData<PropertyModel?>()
+    val propsImmutableState: LiveData<PropertyModel?>
+        get() = propsMutableState
 
     private val errorMutableState: MutableLiveData<String> = MutableLiveData()
     val errorImmutableState: LiveData<String>
@@ -26,11 +28,23 @@ class MainViewModel(private val propertiesRepository: PropertiesRepository) : Vi
             try {
                 val buyProperty =
                     withContext(Dispatchers.IO) { propertiesRepository.fetchProperties(search_mode) }
-                propsMutableState.value = buyProperty.body()
+                updatePropertyState(buyProperty)
             } catch (e: Exception) {
-                propsMutableState.value = null
-                errorMutableState.value = e.message.toString()
+                updatePropertyState(null)
+                updateError(e)
             }
+        }
+    }
+
+    private fun updateError(e: Exception) {
+        errorMutableState.value = e.message.toString()
+    }
+
+    private fun updatePropertyState(buyProperty: Response<PropertyModel>?) {
+        if (buyProperty?.body() != null) {
+            propsMutableState.value = buyProperty.body()
+        } else {
+            propsMutableState.value = null
         }
     }
 }

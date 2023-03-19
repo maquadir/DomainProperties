@@ -4,7 +4,7 @@ import com.example.domainproperties.model.*
 
 object UtilsTest {
 
-    val FirstProp = SearchResult(
+    private val FirstProp = SearchResult(
         listOf("furnished"), "Proposed LOT 14 Bracken Estate, Oberon",
         Advertiser(
             listOf(
@@ -60,7 +60,7 @@ object UtilsTest {
         0
     )
 
-    val SecondProp = SearchResult(
+    private val SecondProp = SearchResult(
         listOf("furnished"), "Proposed LOT 14 Bracken Estate, Oberon",
         Advertiser(
             listOf(
@@ -116,7 +116,7 @@ object UtilsTest {
         0
     )
 
-    val ThirdProp = SearchResult(
+    private val ThirdProp = SearchResult(
         listOf("furnished"), "Proposed LOT 14 Bracken Estate, Oberon",
         Advertiser(
             listOf(
@@ -172,8 +172,8 @@ object UtilsTest {
         0
     )
 
-    val properties = listOf(FirstProp, SecondProp, ThirdProp)
-    val trackingMetadata = TrackingMetadata(
+    private val properties = listOf(FirstProp, SecondProp, ThirdProp)
+    private val trackingMetadata = TrackingMetadata(
         "", "", "", emptyList(), 0.0, 0.0, 0,
         false, false, "",
         0, "", 0, emptyList(),
@@ -183,6 +183,11 @@ object UtilsTest {
     )
     val results = PropertyModel(
         false, 0, 200, 1200, "", SearchInsights(emptyList()), properties,
+        Tracking(), trackingMetadata
+    )
+
+    val emptyResults = PropertyModel(
+        false, 0, 200, 1200, "", SearchInsights(emptyList()), emptyList(),
         Tracking(), trackingMetadata
     )
 }

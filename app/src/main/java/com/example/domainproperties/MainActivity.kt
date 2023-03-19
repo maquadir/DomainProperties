@@ -31,14 +31,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchProperties(getString(R.string.buy))
 
         //observe livedata
-        viewModel.propsImmutableState.observe(this) { buyList ->
-            if (buyList.isNotEmpty()) {//display properties
+        viewModel.propsImmutableState.observe(this) { propertyModel ->
+            if (propertyModel != null) {//display properties
                 binding.recyclerview.visibility = View.VISIBLE
                 binding.recyclerview.apply {
                     layoutManager = LinearLayoutManager(context)
-                    adapter = RecyclerViewAdapter(buyList)
+                    adapter = RecyclerViewAdapter(propertyModel.search_results)
                 }
             } else {//no properties to display
+                binding.textview.apply {
+                    text = getString(R.string.no_properties_available)
+                    visibility = View.VISIBLE
+                }
                 binding.recyclerview.visibility = View.GONE
             }
             binding.progressBar.visibility = View.GONE

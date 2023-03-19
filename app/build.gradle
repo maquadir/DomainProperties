@@ -66,6 +66,8 @@ dependencies {
 
     //CircleIndicator
     implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
 
     //test
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
@@ -89,4 +91,5 @@ dependencies {
     testImplementation "io.mockk:mockk:1.12.4"
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
 }

@@ -59,7 +59,7 @@ PopularMovies and MovieDetails data classes are created using "JSON to Kotlin cl
               val repository = Repository(apiService)
 
 ### View Model
-We set up a view model factory which is responsible for creating view models.It contains the data required in the View and translates the data which is stored in Model which then can be present inside a View. ViewModel and View are connected through Databinding and the observable Livedata.
+We set up a view model factory which is responsible for creating view models with dependencies.It contains the data required in the View and translates the data which is stored in Model which then can be present inside a View. ViewModel and View are connected through Databinding and the observable Livedata.
 
 ### Coroutines
 Coroutines are a great way to write asynchronous code that is perfectly readable and maintainable. We use it to perform a job of reading data from the JSON url.

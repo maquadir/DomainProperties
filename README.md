@@ -123,7 +123,7 @@ UI
 Testing 
 - ```Mockito``` - Unit Tests
 - ```JUnit``` - UI Tests
-- ```MockWebServer```
+- ```MockWebServer``` - mocking server requests
 
 # Screenshot
 ![Screenshot 2023-03-19 at 5 14 50 pm](https://user-images.githubusercontent.com/19331629/226157198-3ce774eb-d65f-4bd1-947d-e530f1119f5f.png)

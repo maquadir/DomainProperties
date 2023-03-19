@@ -69,14 +69,20 @@ It is the UI part that represents the current state of information that is visib
 We use Glide to display profile image using view binding.
 
 ### Getting the data from Github
-- To get the most starred Github repos created in the last 30 days (relative to 2021-01-01), you will need to call the following endpoint:
-      https://api.github.com/search/repositories?q=created:%3E2021-01-01&sort=stars&or der=desc
-      The Github data from Github will be paginated (you will receive around 100 repos per JSON page).
-- To get the 2nd page, you need to add &page=2 to the end of your API request:
-      https: //api.github.com/search/repositories?q=created:%3E2021-01-01&sort=stars&or der=desc&page=2
-- To get to the 3rd page, you need to add &page=3 ... etc
-      More details here:
-      https://docs.github.com/en/rest/search#search-repositories
+- To get the buy properties, you will need to call the following endpoint:
+
+       curl -X POST https://domain-adapter-api.domain.com.au/v1/search -H 'contenttype: application/json' -d '{
+         "dwelling_types": ["Apartment / Unit / Flat"],
+         "search_mode": "buy"
+           }'
+
+- To get the rent properties:
+      
+      curl -X POST https://domain-adapter-api.domain.com.au/v1/search -H 'contenttype: application/json' -d '{
+        "dwelling_types": ["Apartment / Unit / Flat"],
+        "search_mode": "rent"
+        }'
+      
 
 ### Dependency Injection
 Constructor dependency injection has been used at multiple instances.It allows for less code overall when trying to get reference to services you share across classes, and decouples components nicely in general
@@ -106,7 +112,6 @@ Testing
 
 # Screenshot
 
-![img_1.png](img_1.png)
 
 
 

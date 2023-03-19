@@ -37,6 +37,7 @@ android {
 
 dependencies {
 
+    //default
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -61,35 +62,22 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0"
 
-    //Viewpager Implementation
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
-    //CircleIndicator
-    implementation 'me.relex:circleindicator:2.1.6'
-    implementation 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
-
-    //test
+    //test libraries - square, mockito, faker
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
     testImplementation "com.squareup.okhttp3:mockwebserver:4.10.0"
     testImplementation "com.google.truth:truth:1.1.3"
     testImplementation 'com.github.javafaker:javafaker:0.16'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
-
-    // Required -- JUnit 4 framework
     testImplementation "junit:junit:4.13.2"
-//    testImplementation 'org.junit.jupiter:junit-jupiter'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    // Optional -- Robolectric environment
     testImplementation "androidx.test:core:1.5.0"
-    // Optional -- Mockito framework
     testImplementation "org.mockito:mockito-core:4.6.1"
     testImplementation 'org.mockito:mockito-inline:4.6.1'
-    // Optional -- mockito-kotlin
     testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
-    // Optional -- Mockk framework
     testImplementation "io.mockk:mockk:1.12.4"
 
+    //for UI Tests
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 }
